@@ -14,19 +14,7 @@
     <link id="theme-style" rel="stylesheet" href="">
     <link rel="icon" href="images/profile.jpeg">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <?php
-    $mysql_host = 'fdb27.biz.nf';
-    $mysql_user = '3531454_user';
-    $mysql_pass = 'Mg6)n@e;9aRX_0H%';
-    $conn_error = 'could not connect with server';
-    $mysql_db = '3531454_user';
 
-    $mysqli = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
-    if ($mysqli->connect_errno) {
-        echo $conn_error . $mysqli->connect_error;
-        exit();
-    }
-    ?>
 </head>
 
 <body>
@@ -195,35 +183,7 @@
 
                 <input type="submit" id="submit-btn" value="Send">
 
-                <?php
-                if (isset($_POST['name']) && isset($_POST['subject']) && isset($_POST['email']) && isset($_POST['massage'])) {
-                    $name = $_POST['name'];
-                    $subject = $_POST['subject'];
-                    $massage = $_POST['massage'];
-                    $email = $_POST['email'];
-
-                    if (!empty($name) && !empty($subject) && !empty($email) && !empty($massage)) {
-                        $time = time();
-                        $date = (date("Y-m-d", $time));
-                        // echo $date;
-                        $query = "INSERT INTO `information` VALUES ('','$name', '$subject','$email','$massage' , '$date')";
-
-
-                        $mysqli = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
-                        if ($mysqli->connect_errno) {
-                            echo $conn_error . $mysqli->connect_error;
-                            exit();
-                        }
-                        if ($run_query = $mysqli->query($query)) {
-                            echo 'Response Submitted Successfully';
-                        } else {
-                            echo $mysqli->error;
-                        }
-                    } else {
-                        echo 'all filds are required';
-                    }
-                }
-                ?>
+                
             </form>
 
 
